@@ -203,8 +203,10 @@ public class Register extends javax.swing.JFrame {
             String nom = Rnom.getText();
             String prenom = Rprenom.getText();
             String password = Rpass.getText();
-            String acteur = "";
-            int index = Racteur.getSelectedIndex();
+            String classe = Rformation.getText();
+            String niveau = Rniveau.getText();
+            String acteur = "Etudiants";
+            /*int index = Racteur.getSelectedIndex();
             switch(index) {
                 case 0:
                     acteur = "Etudiants";
@@ -213,8 +215,8 @@ public class Register extends javax.swing.JFrame {
                     acteur = "Enseignant";
                     break;
 
-            }
-            String sql = "INSERT INTO "+acteur+"(nom, prenom, password) VALUES('"+nom+"', '"+prenom+"', '"+password+"')";
+            }*/
+            String sql = "INSERT INTO "+acteur+"(nom, prenom, password, classe, niveau) VALUES('"+nom+"', '"+prenom+"', '"+password+"', '"+classe+"', '"+niveau+"')";
             st.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Inscription réussi");
             
