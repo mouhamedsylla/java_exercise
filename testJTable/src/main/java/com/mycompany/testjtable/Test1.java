@@ -113,8 +113,32 @@ public class Test1 {
         String password = props.getProperty("jdbc.password");
         return DriverManager.getConnection(url, username, password);
     }
+    public boolean appaartientTable(String tabl) {
+        boolean retour = false;
+        try{
+            con = getConnection();
+            DatabaseMetaData m = con.getMetaData();
+            ResultSet table = m.getTables(null, null, null, new String[] {"Table"});
+            while(table.next()){
+                String t = table.getString(3);
+                if(t.equals(tabl)){
+                    retour = true;
+                    break;
+                }
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
+        return retour;
+    }
     public static void main(String[] args) {
-        new Test1();
+        Test1 t = new Test1();
+        String myT = "clients";
+        boolean val = t.appaartientTable(myT);
+        System.out.println(val);
     }
 
 }
